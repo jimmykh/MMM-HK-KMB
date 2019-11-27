@@ -153,8 +153,8 @@ module.exports = NodeHelper.create({
                 // If the route doesn't match any of the stops, then it will be dumped
                 let match = fetcher.items()[i].routeStops.filter(stops =>
                         stops.BSICode.split("-")[0] === stopID.split("-")[0] &&
-                            stops.BSICode.split("-")[1] === stopID.split("-")[1] &&
-                            stops.CLocation === self.stopName[stopID]
+                            stops.BSICode.split("-")[1] === stopID.split("-")[1] // &&
+                            // stops.CLocation === self.stopName[stopID]
                     );
                 if (match.length == 1) {
                     // Find the desired stop, obtain the ETA

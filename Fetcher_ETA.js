@@ -39,7 +39,7 @@ var Fetcher_ETA = function(stopInfo, reloadInterval) {
 		stop:stopInfo.BSICode,
 		stop_seq:stopInfo.Seq
 	};
-	url = etaUrl + querystring.stringify(parseQueryString);
+	this._url = etaUrl + querystring.stringify(parseQueryString);
 
 	/* private methods */
 
@@ -52,7 +52,7 @@ var Fetcher_ETA = function(stopInfo, reloadInterval) {
 		reloadTimer = null;
 		items = [];
 
-		request(url, (error, response, body) => {
+		request(self._url, (error, response, body) => {
 			if (response.statusCode === 200) {
 				responseObj = JSON.parse(body);
 				if (!responseObj || responseObj.responsecode!=0) {
@@ -127,7 +127,7 @@ var Fetcher_ETA = function(stopInfo, reloadInterval) {
 	};
 
 	this.url = function() {
-		return url;
+		return this._url;
 	};
 
 	this.route = function() {
